@@ -34,7 +34,7 @@ export const createAvatarUrl = async (filePath) => {
   try {
     const fileUrl = await createImageUrl(filePath)
     if (fileUrl) {
-      useUserStore.setState({ avatar: fileUrl })
+      useUserStore.setState(()=>({ avatar: fileUrl }))
     }
   } catch (err) {
     console.log(err)

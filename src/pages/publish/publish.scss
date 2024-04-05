@@ -1,0 +1,72 @@
+@use '@/assets/global/variables' as *;
+@use '@/assets/global/mixins' as *;
+
+$publish-uploder-size:calc((100vw - #{$sidebar-width} * 2) / 3.5);
+
+.publish-bg{
+  padding: 0 $sidebar-width;
+
+  .title{
+    display: block;
+    padding: 30px 0;
+    font-size: 62px;
+    font-weight: 600;
+    color: $main-dark;
+    text-shadow: $text-shadow;
+  }
+
+  .cover{
+    .uploader{
+      @include uploader(
+          $full-without-sidebar,
+          130px,
+          $bg-secondary,
+          $bg-primary,
+          $outline,
+          10px,
+          20px,
+          row);
+    }
+  }
+  .form{
+    .form-item{
+      font-size: 30px;
+      border-bottom: 5px solid $main-normal;
+
+      .vant-form-label{
+        color: $main-dark;
+        font-weight: bold;
+        margin-bottom: 15px;
+        margin-left: -14rpx;
+        font-size: 32px;
+      }
+      .input-text{
+        min-height: 4vh;
+      }
+      .input-content{
+        min-height: 15vh;
+      }
+    }
+
+    .image-list{
+      margin-top: 60px;
+
+      .uploader{
+        @include uploader(
+            $publish-uploder-size,
+            $publish-uploder-size,
+            $bg-primary,
+            $bg-third,
+            none,
+            30px,
+            20px,
+            column
+        );
+      }
+    }
+
+    .btn{
+      @include submitBtn(70vw,5vh,$main-normal,$main-middle-dark,$box-shadow)
+    }
+  }
+}

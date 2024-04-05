@@ -18,3 +18,18 @@ export function getTravelDetail(id) {
   )
 }
 
+// 发布游记
+export function publishTravel(travelsData) {
+  return request.post(
+    `/travels/publish`,
+    {
+      title: travelsData.title,
+      content: travelsData.content,
+      images: travelsData.images,
+      cover: travelsData.cover,
+      coverWidth: travelsData.coverWidth,
+      coverHeight: travelsData.coverHeight,
+    }
+  )
+}
+
