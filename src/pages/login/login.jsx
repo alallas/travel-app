@@ -1,20 +1,19 @@
 import Taro from "@tarojs/taro";
 import { Input, Text, View, Navigator } from "@tarojs/components"
 import { Button, Form, FormItem } from '@antmjs/vantui'
+import {useEffect} from "react"
 import { setLoginData } from "@/store/userStore"
 import { showSuccessToast, showErrorToast} from "@/utils/toast"
-import {userLogin} from "@/services/user"
-import CryptoJS from "crypto-js";
-
+import {userLogin,checkLogin} from "@/services/user"
+import CryptoJS from "crypto-js"
 import "./login.scss"
 
 export default function Login(){
-
   const handleLogin = async (err,value) => {
     try{
       const res = await userLogin({...value,password:CryptoJS.MD5(value.password).toString()}) //加密
       if(res){
-        setLoginData(res.data)
+        setLoginData(res.data.userInfo)
         showSuccessToast("登陆成功")
         Taro.switchTab({
           url: '/pages/discover/discover'
@@ -25,6 +24,18 @@ export default function Login(){
       showErrorToast(e.message || "登陆失败")
     }
   }
+
+  const isLogin = async ()=>{
+    const res = await checkLogin()
+    const { data: userInfo } = res
+    setLoginData(userInfo)
+    await Taro.switchTab({ url: '/pages/discover/discover' })
+  }
+
+  useEffect(() => {
+    isLogin()
+  }, [])
+
   return(
     <View className='login-bg'>
       <View className='title'>

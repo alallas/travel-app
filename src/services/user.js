@@ -25,3 +25,9 @@ export function userSignup(userInfo) {
   )
 }
 
+// 验证登陆状态
+export function checkLogin() {
+  return request.get(
+    `/user/checkLogin`,
+  )
+}

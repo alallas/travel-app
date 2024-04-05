@@ -48,7 +48,7 @@ export default {
           method: method,
           header: {
             'content-type': contentType,
-            cookie: Taro.getStorageSync('cookies')
+            'Cookie': Taro.getStorageSync('cookies')
           },
           mode: 'cors',
           xhrFields: { withCredentials: true },

@@ -3,9 +3,12 @@ import {immer} from "zustand/middleware/immer"
 import { createImageUrl } from "@/utils/createImageUrl"
 
 const initialUserValue = {
+  id:'',
   username: "",
   expirationTime: "",
   avatar: "",
+  gender:'',
+  nickname:'',
 }
 
 export const useUserStore = create()(
@@ -13,9 +16,13 @@ export const useUserStore = create()(
 )
 
 export const setLoginData = async (userInfo) => {
-  useUserStore.setState(() => ({
+  useUserStore.setState((state) => ({
+    id: userInfo._id,
+    avatar: userInfo.avatar,
+    gender: userInfo.gender,
+    nickname: userInfo.nickname,
     username: userInfo.username,
-    expirationTime: userInfo.expirationTime,
+    expirationTime: userInfo.expirationTime ? userInfo.expirationTime : state.expirationTime,
   }))
 }
 
