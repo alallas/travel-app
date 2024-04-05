@@ -36,7 +36,6 @@ export default function Discover() {
   },[columnWidth])
 
   const showTip = () => {
-    // Toast_.show('为你推荐20条游记')
     Taro.showToast({
       title: '为你推荐20条游记',
       icon: 'none',
@@ -153,7 +152,7 @@ export default function Discover() {
           <View className='rightShow' style={{width:columnWidth}}>
             {
               rightShowList.map((item,index) => (
-                // <View key={index} style={{
+                // <View key={login.jsx} style={{
                 //   height: item.h*columnWidth/item.w,
                 //   width:columnWidth,
                 //   background:'pink',

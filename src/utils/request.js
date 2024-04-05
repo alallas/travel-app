@@ -52,26 +52,33 @@ export default {
           },
           mode: 'cors',
           xhrFields: { withCredentials: true },
-          success(res) {
+          success:(res)=>{
             setCookie(res)
-            if (res.statusCode === HTTP_STATUS.NOT_FOUND) {
-              return console.log('api', '请求资源不存在')
-            } else if (res.statusCode === HTTP_STATUS.BAD_GATEWAY) {
-              return console.log('api', '服务端出现了问题')
-            } else if (res.statusCode === HTTP_STATUS.FORBIDDEN) {
-              return console.log('api', '没有权限访问')
-            } else if (res.statusCode === HTTP_STATUS.AUTHENTICATE) {
-              Taro.clearStorage()
-              // Taro.navigateTo({
-              //   url: '/pages/packageA/pages/login/index'
-              // })
-              return console.log('api', '请先登录')
-            } else if (res.statusCode === HTTP_STATUS.SUCCESS) {
+            // if (res.statusCode === HTTP_STATUS.NOT_FOUND) {
+            //   return console.log('api', '请求资源不存在')
+            // } else if (res.statusCode === HTTP_STATUS.BAD_GATEWAY) {
+            //   return console.log('api', '服务端出现了问题')
+            // } else if (res.statusCode === HTTP_STATUS.FORBIDDEN) {
+            //   return console.log('api', '没有权限访问')
+            // } else if (res.statusCode === HTTP_STATUS.AUTHENTICATE) {
+            //   Taro.clearStorage()
+            //   // Taro.navigateTo({
+            //   //   url: '/pages/packageA/pages/login/login.jsx'
+            //   // })
+            //   return console.log('api', '请先登录')
+            // } else if (res.statusCode === HTTP_STATUS.SUCCESS) {
+            //   resolve(res.data)
+            // }
+            if (res.statusCode === HTTP_STATUS.SUCCESS) {
               resolve(res.data)
+            }else{
+              console.log('api', '请求接口出现问题', res)
+              reject(res.data)
             }
           },
-          error(e) {
-            console.log('api', '请求接口出现问题', e)
+          fail:(err)=>{
+            console.log('api', '请求接口出现问题', err)
+            reject(err)
           }
         })
     })

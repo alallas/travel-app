@@ -1,6 +1,7 @@
 export default defineAppConfig({
   pages: [
-    // 'pages/travels.js/travels.js',
+    'pages/login/login',
+    'pages/register/register',
     'pages/discover/discover',
     'pages/publish/publish',
     'pages/mine/mine',
