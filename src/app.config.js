@@ -4,6 +4,7 @@ export default defineAppConfig({
     'pages/register/register',
     'pages/discover/discover',
     'pages/publish/publish',
+    'pages/search/search',
     'pages/mine/mine',
     'pages/detail/detail'
   ],

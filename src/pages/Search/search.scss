@@ -1,0 +1,53 @@
+@use '@/assets/global/variables' as *;
+@use '@/assets/global/mixins' as *;
+@import '@/assets/mixin.scss';
+
+
+.search-container {
+  @include wh(100%, 100%);
+  //padding: 0 40px;
+  .search-part{
+    height: 120px;
+    padding: 10px 27px 18px;
+    box-shadow: 0 0 10px 5px rgba(201, 196, 196, 0.32);
+  }
+  .search-keywords{
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .drop-menu{
+    height: 100px;
+    padding: 0 60px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgba(201, 196, 196, 0.32);
+    font-size: 0.8rem;
+    color: #696767;
+    .van-ellipsis{
+      font-size: 0.8rem;
+      color: #696767;
+    }
+  }
+  .van-tab--active-line{
+    background: $main-middle-dark;
+  }
+  .search-content-travels{
+    min-height: calc( 100vh - 200px);
+    background: #8B1FFF;
+  }
+  .usercard-part{
+    min-height: calc( 100vh - 200px);
+    margin-top: 10px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  //.search-result{
+  //  padding-top: 5px;
+  //  height: calc( 100vh - 125px );
+  //}
+}

@@ -31,3 +31,40 @@ export function checkLogin() {
     `/user/checkLogin`,
   )
 }
+
+// 获取用户发布的所有游记
+export function getUserTravels() {
+  return request.get(
+    `/user/auditTravels`,
+  )
+}
+
+// 获取用户的信息
+export function getUserInfo() {
+  return request.get(
+    `/user/getUserInfo`,
+  )
+}
+
+// 用户搜索游记
+export function searchTravelsByKeyword(keyword, page=1) {
+  return request.get(
+    `/user/searchTravels`,
+    {
+      keyword,
+      page,
+    },
+  )
+}
+
+// 用户搜索用户
+export function searchUsersByKeyword(keyword) {
+  return request.get(
+    `/user/searchUsers`,
+    {
+      keyword,
+    },
+  )
+}
+
+

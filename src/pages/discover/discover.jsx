@@ -1,12 +1,14 @@
-import { View, Text, ScrollView } from '@tarojs/components'
+import {View, Text, ScrollView, Input} from '@tarojs/components'
 import Taro, { useLoad } from '@tarojs/taro'
-import {useEffect, useRef, useState} from "react"
+import React, {useEffect, useRef, useState} from "react"
 import { vibrateShort } from "@/utils/taroUtils"
 import { useBaseStore } from '@/store/baseStore.js'
 import SearchBar from "@/components/SearchBar"
 import WaterfallCard from "@/components/WaterfallCard"
 import {getWaterFallList} from "@/services/travels"
+import {Icon} from "@antmjs/vantui"
 import './discover.scss'
+
 
 export default function Discover() {
   const containerRef = useRef()
@@ -93,6 +95,12 @@ export default function Discover() {
     setRightHeight(rightHeightCur)
   }
 
+  const handleSearch = ()=>{
+    Taro.navigateTo({
+      url: '/pages/search/search'
+    })
+  }
+
   const onScroll = (e) => {
     console.log(e,Math.max(leftHeight,rightHeight))
     // const largerThreshold = viewHeight * 3 / 4; // 距离底部距离 视图高度的 3/4
@@ -103,11 +111,6 @@ export default function Discover() {
     //   fetchData() // 手动触发 onScrollToLower
     // }
   }
-
-  const onSearch = ()=>{
-    console.log('onSearch')
-  }
-
 
   return (
     <ScrollView
@@ -127,7 +130,11 @@ export default function Discover() {
         <Text className='title' style={{top:pos.top}}>Discover</Text>
       </View>
       <View className='discover-search'>
-        <SearchBar onSearch={onSearch} />
+        {/*<SearchBar onSearch={onSearch} />*/}
+        <View className='search-part' onClick={handleSearch}>
+          <Text>搜索游记</Text>
+          <Icon name='search' size='24px' color='#969696' className='search-icon'/>
+        </View>
       </View>
       <View className='discover-waterfall'>
         <View

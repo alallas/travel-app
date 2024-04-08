@@ -14,3 +14,10 @@ export const showSuccessToast = (msg) => {
     icon: 'success',
   })
 }
+
+export const showTextToast = (msg) => {
+  Taro.showToast({
+    title: msg,
+    icon: 'none',
+  })
+}

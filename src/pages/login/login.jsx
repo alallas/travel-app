@@ -1,6 +1,6 @@
 import Taro from "@tarojs/taro";
 import { Input, Text, View, Navigator } from "@tarojs/components"
-import { Button, Form, FormItem } from '@antmjs/vantui'
+import {Button, Form, FormItem } from '@antmjs/vantui'
 import {useEffect} from "react"
 import { setLoginData } from "@/store/userStore"
 import { showSuccessToast, showErrorToast} from "@/utils/toast"

@@ -33,3 +33,11 @@ export function publishTravel(travelsData) {
   )
 }
 
+// 删除游记
+export function deleteTravel(travelId) {
+  return request.post(
+    `/travels/deleteTravel/${travelId}`,
+  )
+}
+
+
