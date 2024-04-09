@@ -23,7 +23,6 @@ export default function Mine() {
     console.log("page did show")
     getMyUserInfo();
     getMyTravelsList();
-    console.log("mine user info",userInfoData)
   })
 
 
@@ -34,7 +33,6 @@ export default function Mine() {
 
   const getMyUserInfo = async ()=>{
     const {data:userInfo} = await getUserInfo()
-    console.log("mine user info",userInfo)
     const {avatar,nickname,username}=userInfo.userInfo;
     setUserInfoData({avatar,nickname,username})
   }
@@ -61,9 +59,7 @@ export default function Mine() {
   }
 
   const handleEditMyTravel=async (item)=>{
-    console.log("mine item--")
     const { _id, cover, images, content, title  } = item;
-    console.log("mine content title--",{content,title})
     const currentTravelData = { cover, images, content, title}
     setCurrentTravelData(currentTravelData);
 

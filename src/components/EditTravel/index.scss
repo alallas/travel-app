@@ -1,5 +1,6 @@
 @use '@/assets/global/variables' as *;
 @use '@/assets/global/mixins' as *;
+@use '@/components/Uploader/index.scss' as *;
 
 .cover{
   .uploader{
@@ -10,8 +11,9 @@
       $bg-primary,
       $outline,
       10px,
-      20px,
-      row);
+      row,
+      20px
+    );
   }
 }
 .edit-form{
@@ -46,8 +48,8 @@
         $bg-third,
         none,
         30px,
-        20px,
-        column
+        column,
+        20px
       );
     }
   }

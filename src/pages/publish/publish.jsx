@@ -1,10 +1,10 @@
 import { Text, View } from "@tarojs/components";
-import { useDidShow } from '@tarojs/taro'
-import './publish.scss'
 import { publishTravel } from "@/services/travels";
 import EditTravel from "@/components/EditTravel";
 import { showSuccessToast } from "@/utils/toast";
-import { setCurrentTravelData } from "@/store/travelStore";
+
+import './publish.scss'
+
 
 export default function Publish() {
 
@@ -13,9 +13,7 @@ export default function Publish() {
     showSuccessToast("发布成功");
   }
 
-  useDidShow(() => {
-    setCurrentTravelData();
-  })
+
 
   return (
     <View className='publish-bg'>

@@ -1,7 +1,7 @@
 import { View,Text } from "@tarojs/components";
 import { Icon } from '@antmjs/vantui';
 
-const AddBox=(props)=>{
+const AddImgBox=(props)=>{
   const {imageType, handleImageUpload}=props
 
   return(
@@ -39,5 +39,5 @@ const AddBox=(props)=>{
 
 }
 
-export default AddBox;
+export default AddImgBox;
 

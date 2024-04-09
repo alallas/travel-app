@@ -1,11 +1,11 @@
 import Taro from "@tarojs/taro";
 import { View, Image } from "@tarojs/components";
 import { Icon } from '@antmjs/vantui'
-import AddBox from "./addBox"
+import AddImgBox from "@/components/AddImgBox"
 
 function Uploader(props) {
   const{ createUrlList, removeImage, imageList, isOnlyOne, imageType } = props
-  console.log("uploader imagelist",imageList)
+
 
   const handleImageUpload = async ()=>{
     Taro.chooseImage({
@@ -27,7 +27,7 @@ function Uploader(props) {
   return (
     <View className='uploader'>
       {imageList?.length===0 || (imageList?.length===1 && imageList[0]==="")
-        ? (<AddBox handleImageUpload={handleImageUpload} imageType={imageType} />)
+        ? (<AddImgBox handleImageUpload={handleImageUpload} imageType={imageType} />)
         : (
           <View className='img-list'>
             {
@@ -54,7 +54,7 @@ function Uploader(props) {
             }
             {
               isOnlyOne===false
-                ? (<AddBox handleImageUpload={handleImageUpload} imageType={imageType} />)
+                ? (<AddImgBox handleImageUpload={handleImageUpload} imageType={imageType} />)
                 : undefined
             }
           </View>

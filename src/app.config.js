@@ -17,25 +17,27 @@ export default defineAppConfig({
   },
   tabBar: {
     color: "#333",
-    selectedColor: "#f03d37",
+    selectedColor: "#A797F8",
     backgroundColor: "#fff",
-    borderStyle: "black",
+    borderStyle: "white",
     list: [
       {
         pagePath: "pages/discover/discover",
         text: "发现",
-        // iconPath: "./assets/images/travels.js.png",
-        // selectedIconPath: "./assets/images/index_focus.png"
+        iconPath: "./assets/images/discover.png",
+        selectedIconPath: "./assets/images/discover_selected.png"
       },
       {
         pagePath: "pages/publish/publish",
         text: "发布",
+        iconPath: "./assets/images/publish.png",
+        selectedIconPath: "./assets/images/publish_selected.png"
       },
       {
         pagePath: "pages/mine/mine",
         text: "我的",
-        // iconPath: "./assets/images/person.png",
-        // selectedIconPath: "./assets/images/personSelect.png"
+        iconPath: "./assets/images/mine.png",
+        selectedIconPath: "./assets/images/mine_selected.png"
       }
     ]
   }

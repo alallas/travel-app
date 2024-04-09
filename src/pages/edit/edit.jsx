@@ -1,22 +1,18 @@
 import { View, Text } from "@tarojs/components";
-import Taro, { useDidShow, useRouter } from "@tarojs/taro";
+import Taro, { useRouter } from "@tarojs/taro";
 import EditTravel from "@/components/EditTravel";
 import { Icon } from '@antmjs/vantui'
 import { editMyTravel } from "@/services/travels";
+import { showSuccessToast } from "@/utils/toast";
 
 import "./edit.scss"
-import { showSuccessToast } from "@/utils/toast";
+
 
 function Edit(){
 
-  useDidShow(()=>{
-    console.log("edit page didshow");
-
-  })
-
   const router=useRouter();
   const {id}=router.params;
-  console.log("edit page tarvelid",id)
+
 
   const backToMine=()=>{
     Taro.navigateBack()

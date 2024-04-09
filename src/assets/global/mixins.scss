@@ -42,7 +42,7 @@
 }
 
 
-// 表单、上传、跳转
+// 表单
 
 @mixin form{
   display: flex;
@@ -77,6 +77,8 @@
 }
 
 
+// 跳转
+
 @mixin trans-page{
   display: flex;
   align-items: center;
@@ -87,71 +89,6 @@
 
   .transfer-link{
     text-decoration: underline;
-  }
-}
-
-@mixin uploader($width,$height,$bg,$active-bg,$border,$border-radius,$delete-pos,$add-direct){
-
-  .add{
-    width: $width;
-    height: $height;
-    position: relative;
-    border-radius: $border-radius;
-    border: $border;
-    background-color: $bg;
-    flex-shrink: 0;
-    @include transition;
-
-    .add-container{
-      @include xy-middle;
-      display: flex;
-      flex-direction: $add-direct;
-      justify-content: center;
-      align-items: center;
-
-      .add-text{
-        font-size: 18px;
-        color: $main-light;
-        padding: 10px;
-        text-align: center;
-        width: 100px;
-      }
-    }
-
-    &:active{
-      background-color: $active-bg;
-    }
-  }
-
-  .img-list{
-    display: flex;
-
-    .img-container{
-      position: relative;
-      flex-shrink: 0;
-      margin-right: 15px;
-
-      .img{
-        width: $width;
-        height: $height;
-        border-radius: $border-radius;
-      }
-
-      .delete-icon{
-        position: absolute;
-        top: $delete-pos;
-        right: $delete-pos;
-        background-color: $main-normal-50;
-        backdrop-filter: blur(10px);
-        padding: 5px;
-        border-radius: 50%;
-        @include transition;
-
-        &:active{
-          background-color: $main-deep-dark;
-        }
-      }
-    }
   }
 }
 

@@ -1,6 +1,6 @@
 import { Form, FormItem, Button } from "@antmjs/vantui";
-import { Text, View, ScrollView, Textarea } from "@tarojs/components";
-import { useState } from "react";
+import { View, ScrollView, Textarea } from "@tarojs/components";
+import { useRef } from "react";
 import Uploader from "@/components/Uploader"
 import {
   createCoverUrl,
@@ -10,15 +10,16 @@ import {
   changeCover,
   setCurrentTravelData,
 } from '@/store/travelStore'
-import { showErrorToast, showSuccessToast } from "../../utils/toast";
+import { showErrorToast } from "../../utils/toast";
 import { getImageWH } from "@/utils/taroUtils";
 
 import "./index.scss";
 
+
 function EditTravel (props){
   const { editType, submit }=props;
-  const [titleInput,setTitleInput]=useState('');
-  const [contentInput,setContentInput]=useState('');
+
+  const formRef=useRef();
 
   const {
     images,
@@ -32,10 +33,10 @@ function EditTravel (props){
     content:state.content,
   }))
 
-  console.log("edit cpn cover:",cover,"images:",images)
+
 
   const handleSubmit = async (err,values) => {
-    console.log("edit cpn form value",values)
+
     // 检验
     const keysList = Object.keys(values)
     for(let i=0;i<keysList.length;i++){
@@ -53,12 +54,11 @@ function EditTravel (props){
       }
     }
     const {width,height} = await getImageWH(cover);
-    console.log("edit cpn data",{...values,cover,images,coverHeight:height,coverWidth:width})
 
     await submit({...values,cover,images,coverHeight:height,coverWidth:width});
 
     setCurrentTravelData();
-
+    formRef.current.resetFields();
 
   }
 
@@ -76,11 +76,17 @@ function EditTravel (props){
       <Form
         onFinish={handleSubmit}
         className='edit-form'
+        ref={formRef}
         initialValues={
-          {
-            title:title,
-            content:content,
-          }
+          editType==="edit"
+            ? {
+                title:title,
+                content:content,
+            }
+            : {
+                title:"",
+                content:"",
+            }
         }
       >
         <FormItem
@@ -88,7 +94,7 @@ function EditTravel (props){
           label='标题'
           layout='vertical'
           className='edit-form-item'
-          valueKey="value"
+/*           valueKey="value" */
           valueFormat={(e)=>e.detail.value}
           trigger='onInput'
         >
@@ -98,8 +104,8 @@ function EditTravel (props){
             autoHeight
             className='input-title'
             maxlength={-1}
-            value={titleInput}
-            onInput={(e)=>setTitleInput(e.detail.value)}
+/*             value={titleInput}
+            onInput={(e)=>setTitleInput(e.detail.value)} */
           />
         </FormItem>
         <FormItem
@@ -107,7 +113,7 @@ function EditTravel (props){
           label='旅途中的发现'
           layout='vertical'
           className='edit-form-item'
-          valueKey="value"
+/*           valueKey="value" */
           valueFormat={(e)=>e.detail.value}
           trigger='onInput'
         >
@@ -117,8 +123,8 @@ function EditTravel (props){
             autoHeight
             className='input-content'
             maxlength={-1}
-            value={contentInput}
-            onInput={(e)=>setContentInput(e.detail.value)}
+/*             value={contentInput}
+            onInput={(e)=>setContentInput(e.detail.value)} */
           />
         </FormItem>
         <ScrollView
