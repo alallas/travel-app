@@ -21,6 +21,15 @@ $text-shadow-color:#8B1FFF;
 // 阴影
 $box-shadow: 0 0 40px $box-shadow-color;
 $text-shadow: 0 0 60px $text-shadow-color;
+$list-box-shadow: 0 0 15px $middle-grey;
+
+// 主要页面侧边距
+$sidebar-width:40px;
+
+
+// 减去页面边距，且页面宽度填满
+$full-without-sidebar:calc(100vw - #{$sidebar-width} * 2);
+
 
 // uploader变量
 $bg-primary:#F2F0FF;
@@ -28,11 +37,12 @@ $bg-secondary:#F8F7FF;
 $bg-third:#E4E1FC;
 $grey:#B3B3B3;
 $outline:1px dashed $main-middle-dark;
+$publish-uploder-size:calc((100vw - #{$sidebar-width} * 2) / 3.5);
+
+// 标签颜色
+$orange:#FAAE16;
+$red:#FF4D4F;
+$green:#52C41A;
 
 
-// 主要页面侧边距
-$sidebar-width:60px;
 
-
-// 减去页面边距，且页面宽度填满
-$full-without-sidebar:calc(100vw - #{$sidebar-width} * 2);

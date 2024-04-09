@@ -9,7 +9,6 @@ export const createImageUrl = async (filePath) => {
       filePath: filePath,
       name: "file",
     })
-    console.log("createUrl函数工具页面的res", res)
 
     const result = JSON.parse(res.data);
 
@@ -17,7 +16,6 @@ export const createImageUrl = async (filePath) => {
       const { fileUrl } = result.data;
       Taro.hideLoading();
       showSuccessToast(result.message);
-      console.log("createUrl函数工具页面的fileUrl数组", fileUrl)
       return fileUrl
     } else {
       Taro.hideLoading();

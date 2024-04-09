@@ -13,7 +13,6 @@ export default function Login(){
     try{
       const res = await userLogin({...value,password:CryptoJS.MD5(value.password).toString()}) //加密
       if(res){
-        setLoginData(res.data.userInfo)
         showSuccessToast("登陆成功")
         Taro.switchTab({
           url: '/pages/discover/discover'
@@ -27,8 +26,7 @@ export default function Login(){
 
   const isLogin = async ()=>{
     const res = await checkLogin()
-    const { data: userInfo } = res
-    setLoginData(userInfo)
+
     await Taro.switchTab({ url: '/pages/discover/discover' })
   }
 

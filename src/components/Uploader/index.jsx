@@ -5,7 +5,7 @@ import AddBox from "./addBox"
 
 function Uploader(props) {
   const{ createUrlList, removeImage, imageList, isOnlyOne, imageType } = props
-  console.log(imageList)
+  console.log("uploader imagelist",imageList)
 
   const handleImageUpload = async ()=>{
     Taro.chooseImage({

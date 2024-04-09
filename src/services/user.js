@@ -67,4 +67,9 @@ export function searchUsersByKeyword(keyword) {
   )
 }
 
-
+// 登出
+export function logout() {
+  return request.get(
+    `/user/logout`,
+  )
+}

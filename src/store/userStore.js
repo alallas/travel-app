@@ -3,19 +3,14 @@ import {immer} from "zustand/middleware/immer"
 import { createImageUrl } from "@/utils/createImageUrl"
 
 const initialUserValue = {
-  id:'',
-  username: "",
-  expirationTime: "",
   avatar: "",
-  gender:'',
-  nickname:'',
 }
 
 export const useUserStore = create()(
   immer(() => initialUserValue)
 )
 
-export const setLoginData = async (userInfo) => {
+/* export const setLoginData = (userInfo) => {
   useUserStore.setState((state) => ({
     id: userInfo._id,
     avatar: userInfo.avatar,
@@ -24,7 +19,9 @@ export const setLoginData = async (userInfo) => {
     username: userInfo.username,
     expirationTime: userInfo.expirationTime ? userInfo.expirationTime : state.expirationTime,
   }))
-}
+  console.log("useratore", userInfo)
+  console.log("useratore travelsListValue", useUserStore.getState())
+} */
 
 export const removeAvatar = () => {
   useUserStore.setState(() => ({ avatar: ''  }))
@@ -41,13 +38,7 @@ export const createAvatarUrl = async (filePath) => {
   }
 }
 
-//
-//   fetchRegisterData: async (userInfo) => {
-//     try {
-//       const res = await instance.post('/user/signup', userInfo);
-//       return res;
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-// }));
+
+
+
+

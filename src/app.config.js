@@ -6,7 +6,8 @@ export default defineAppConfig({
     'pages/publish/publish',
     'pages/search/search',
     'pages/mine/mine',
-    'pages/detail/detail'
+    'pages/detail/detail',
+    'pages/edit/edit',
   ],
   window: {
     backgroundTextStyle: 'light',

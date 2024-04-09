@@ -1,6 +1,6 @@
 import { Form, FormItem, Button } from "@antmjs/vantui";
 import { Text, View, ScrollView, Textarea } from "@tarojs/components";
-import Taro, { useLoad } from '@tarojs/taro'
+import { useState } from "react";
 import Uploader from "@/components/Uploader"
 import {
   createCoverUrl,
@@ -17,6 +17,8 @@ import "./index.scss";
 
 function EditTravel (props){
   const { editType, submit }=props;
+  const [titleInput,setTitleInput]=useState('');
+  const [contentInput,setContentInput]=useState('');
 
   const {
     images,
@@ -30,6 +32,7 @@ function EditTravel (props){
     content:state.content,
   }))
 
+  console.log("edit cpn cover:",cover,"images:",images)
 
   const handleSubmit = async (err,values) => {
     console.log("edit cpn form value",values)
@@ -56,6 +59,7 @@ function EditTravel (props){
 
     setCurrentTravelData();
 
+
   }
 
   return(
@@ -73,19 +77,18 @@ function EditTravel (props){
         onFinish={handleSubmit}
         className='edit-form'
         initialValues={
-          editType==="edit"
-            ? {
-                title:title,
-                content:content,
-              }
-            : {}
+          {
+            title:title,
+            content:content,
           }
+        }
       >
         <FormItem
           name='title'
           label='标题'
           layout='vertical'
           className='edit-form-item'
+          valueKey="value"
           valueFormat={(e)=>e.detail.value}
           trigger='onInput'
         >
@@ -95,6 +98,8 @@ function EditTravel (props){
             autoHeight
             className='input-title'
             maxlength={-1}
+            value={titleInput}
+            onInput={(e)=>setTitleInput(e.detail.value)}
           />
         </FormItem>
         <FormItem
@@ -102,6 +107,7 @@ function EditTravel (props){
           label='旅途中的发现'
           layout='vertical'
           className='edit-form-item'
+          valueKey="value"
           valueFormat={(e)=>e.detail.value}
           trigger='onInput'
         >
@@ -111,6 +117,8 @@ function EditTravel (props){
             autoHeight
             className='input-content'
             maxlength={-1}
+            value={contentInput}
+            onInput={(e)=>setContentInput(e.detail.value)}
           />
         </FormItem>
         <ScrollView

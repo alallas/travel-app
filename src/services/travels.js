@@ -41,3 +41,10 @@ export function deleteTravel(travelId) {
 }
 
 
+// 编辑我的游记
+export function editMyTravel(id, myEditedTravel) {
+  return request.post(
+    `/travels/edit/${id}`,
+    {...myEditedTravel}
+  )
+}
