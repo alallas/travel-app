@@ -5,7 +5,7 @@ import './index.scss'
 
 function OverlayLoading(props) {
   return(
-    <Overlay show>
+    <Overlay show={props.isloading}>
       <View className='overlay-wrapper'>
         <View className='overlay-loading' />
       </View>

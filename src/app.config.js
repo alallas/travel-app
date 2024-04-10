@@ -8,6 +8,7 @@ export default defineAppConfig({
     'pages/mine/mine',
     'pages/detail/detail',
     'pages/edit/edit',
+    'pages/user/user',
   ],
   window: {
     backgroundTextStyle: 'light',

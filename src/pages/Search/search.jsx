@@ -7,9 +7,10 @@ import {DropdownItem, DropdownMenu, Empty, Search, Tab, Tabs} from '@antmjs/vant
 import KeywordsShow from "../../components/KeywordsShow"
 import {showTextToast} from "@/utils/toast"
 import {searchUsersByKeyword} from "@/services/user"
+import UserItemCard from "@/components/UserItemCard"
+import OverlayLoading from "@/components/OverlayLoading"
+import {searchTravelsByKeyword} from "@/services/user";
 import './search.scss'
-import UserItemCard from "../../components/UserItemCard";
-// import OverlayLoading from "../../components/OverlayLoading";
 
 
 const sortOptions =  [
@@ -27,14 +28,14 @@ const sortOptions =  [
   },
 ]
 export default function MySearch() {
-  // const id = useUserStore(state=>state.id)
-  // console.log(id)
   const [isSearch, setIsSearch] = useState(false)
   const [isloading, setIsloading] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [sort, setSort] = useState('1')
 
   const [userList, setUserList] = useState([])
+  const [travelsList, setTravelsList] = useState([])
+  const [travelsTotal, setTravelsTotal] = useState(0)
 
 
   useLoad(() => {
@@ -59,6 +60,7 @@ export default function MySearch() {
   const onSearch = (e) => {
     console.log(`search: ${e.detail}`)
   }
+
   const searchAction = async () => {
     console.log(`search:`, searchValue)
     if(searchValue === ''){
@@ -68,7 +70,10 @@ export default function MySearch() {
       setIsSearch(true)
       try {
         const res = await searchUsersByKeyword(searchValue)
+        const res_t = await searchTravelsByKeyword(searchValue)
         setUserList(res.data.users)
+        setTravelsList(res_t.data.travels)
+        setTravelsTotal(res_t.data.total)
         console.log(res.data.users)
       }catch (err){
         console.log(err)
@@ -89,11 +94,7 @@ export default function MySearch() {
 
   return (
     <View className='search-container'>
-      {/*{*/}
-      {/*  isloading && (*/}
-      {/*    <OverlayLoading />*/}
-      {/*  )*/}
-      {/*}*/}
+      <OverlayLoading isloading={isloading} />
       <View className='search-part'>
         {/*<SearchBar onSearch={onSearch} />*/}
         <Search
@@ -114,7 +115,7 @@ export default function MySearch() {
               <View className='drop-menu'>
                 <View>
                   <Text>
-                    108905 篇游记
+                    共 {travelsTotal} 篇游记
                   </Text>
                 </View>
                 {/*<DropdownMenu activeColor='#7667C2'>*/}
@@ -122,7 +123,15 @@ export default function MySearch() {
                 {/*</DropdownMenu>*/}
               </View>
               <View className='search-content-travels'>
-
+                {
+                  travelsList.length === 0 ?(
+                    <Empty image='search' description='搜索为空' />
+                  ):(
+                    <View>
+                      <Text>游记</Text>
+                    </View>
+                  )
+                }
               </View>
             </Tab>
             <Tab title='用户'>

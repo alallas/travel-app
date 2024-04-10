@@ -73,3 +73,8 @@ export function logout() {
     `/user/logout`,
   )
 }
+export function getUserInfoById(id) {
+  return request.get(
+    `/user/getUserInfoById?id=${id}`,
+  )
+}

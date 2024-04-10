@@ -5,6 +5,13 @@ import './index.scss'
 
 function UserItemCard(props) {
   const { userInfo } = props
+
+  const toUser = (id)=>{
+    Taro.navigateTo({
+      url: `/pages/user/user?id=${id}`
+    })
+  }
+
   return(
     <View className='usercard-container'>
       <Image
@@ -19,6 +26,7 @@ function UserItemCard(props) {
         size='small'
         color='linear-gradient(to right, #A797F8, #7667C2)'
         className='usercard-btn'
+        onClick={()=>toUser(userInfo._id)}
       >
         去访问
       </Button>
