@@ -4,7 +4,8 @@
 
 
 .search-container {
-  @include wh(100%, 100%);
+  @include wh(100vw, 100vh);
+  box-sizing: border-box;
   //padding: 0 40px;
   .search-part{
     height: 120px;
@@ -35,7 +36,41 @@
     background: $main-middle-dark;
   }
   .search-content-travels{
-    min-height: calc( 100vh - 200px);
+    //min-height: calc( 100vh - 200px);
+    .water-container{
+      width: 100vw;
+      box-sizing: border-box;
+      padding: 0 40px;
+      .water-part{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .water-item{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+      }
+      .water-bottom{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        background-color: transparent;
+        .water-loading{
+          width: 25px;
+          height: 25px;
+          border: 3px solid #ddd;
+          border-radius: 50%;
+          border-bottom: 3px solid #717171;
+          transform: rotate(0deg);
+          animation: loading 1s linear infinite;
+        }
+        .water-all{
+          color: #555555;
+        }
+      }
+    }
   }
   .usercard-part{
     min-height: calc( 100vh - 200px);

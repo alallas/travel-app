@@ -47,7 +47,7 @@ export function getUserInfo() {
 }
 
 // 用户搜索游记
-export function searchTravelsByKeyword(keyword, page=1) {
+export function searchTravelsByKeyword(keyword, page= 1) {
   return request.get(
     `/user/searchTravels`,
     {
@@ -57,12 +57,24 @@ export function searchTravelsByKeyword(keyword, page=1) {
   )
 }
 
+// 用户搜索游记by userId
+export function searchTravelsByUserId(userId, page= 1) {
+  return request.get(
+    `/user/searchTravelsByuserId`,
+    {
+      userId,
+      page,
+    },
+  )
+}
+
 // 用户搜索用户
-export function searchUsersByKeyword(keyword) {
+export function searchUsersByKeyword(keyword, page) {
   return request.get(
     `/user/searchUsers`,
     {
       keyword,
+      page
     },
   )
 }

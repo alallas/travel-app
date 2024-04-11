@@ -43,4 +43,4 @@ function WaterfallCard(props) {
   );
 }
 
-export default WaterfallCard
+export default React.memo(WaterfallCard)
