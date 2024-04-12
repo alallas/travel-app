@@ -26,7 +26,11 @@ export default function Discover() {
 
   const getDetail = async ()=>{
     const {data} = await getTravelDetail(id)
-    console.log(data)
+    const {images,cover}=data.travel;
+    console.log("detail",data)
+    if(cover!==images[0]){
+      images.push(cover)
+    }
     setTravel(data.travel)
   }
   return(

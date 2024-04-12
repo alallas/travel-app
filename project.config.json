@@ -2,14 +2,14 @@
   "miniprogramRoot": "dist/",
   "projectname": "travel-note",
   "description": "",
-  "appid": "wx5e3f2d52a423fba7",
+  "appid": "wxbd105f3aed437e1a",
   "setting": {
     "urlCheck": false,
     "es6": true,
     "enhance": true,
     "compileHotReLoad": false,
     "postcss": false,
-    "minified": false,
+    "minified": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],

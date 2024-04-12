@@ -27,8 +27,10 @@ export default function Mine() {
 
 
   const getMyTravelsList = async ()=>{
+    Taro.showLoading({ title: '加载中', mask: true });
     const {data:travels} = await getUserTravels();
     setMyTravelsData(travels.travels);
+    Taro.hideLoading();
   }
 
   const getMyUserInfo = async ()=>{

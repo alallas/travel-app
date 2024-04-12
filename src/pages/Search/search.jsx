@@ -129,6 +129,10 @@ export default function MySearch() {
     setSort(e)
   }
 
+  let history = [];
+  if(searchValue !== ''){
+    history.push(searchValue);
+  }
 
 
   return (
@@ -238,8 +242,8 @@ export default function MySearch() {
           </Tabs>
         ):(
           <View className='search-keywords'>
-            <KeywordsShow title='历史记录' keywords={['火腿','面条','火腿','面条','火腿','面条','火腿','面条','火腿','面条','火腿','面条','火腿','面条']} />
-            <KeywordsShow title='热门记录' keywords={['火腿','面条','火腿','面条','火腿','面条','火腿','面条','火腿','面条','火腿','面条','火腿','面条']} />
+            <KeywordsShow title='历史记录' keywords={history} />
+            <KeywordsShow title='热门记录' keywords={['吃','玩']} />
           </View>
         )
       }

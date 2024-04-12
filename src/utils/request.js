@@ -71,7 +71,11 @@ export default {
             //   resolve(res.data)
             // }
             if (res.statusCode === HTTP_STATUS.SUCCESS) {
-              showSuccessToast(res.data.message)
+              if(res.data.message.indexOf("过期")!==-1){
+                Taro.navigateTo({
+                  url: `/pages/login/login`
+                })
+              }
               resolve(res.data)
             }else{
               console.log('api', '请求接口出现问题', res)

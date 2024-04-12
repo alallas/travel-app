@@ -112,7 +112,7 @@ export default function WaterfallList(props) {
           }
         </View>
 
-        <View className='water-item' style={{width:columnWidth}}>
+        <View className='water-item water-item-right' style={{width:columnWidth}}>
           {
             rightShowList.map((item,index) => (
               <WaterfallCard
